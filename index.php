@@ -16,7 +16,7 @@
   -->
   <div class="row">
     <div class="col-fill header">
-        header
+
     </div>
   </div>
 <?php
@@ -70,7 +70,7 @@
 </div>
   <div class="row">
     <div class="col-fill footer">
-        footer
+        copyright tiffany peng
     </div>
   </div>
 </body>
