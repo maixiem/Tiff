@@ -1,7 +1,9 @@
 <html>
 <head>
   <link rel="stylesheet" type="text/css" href="v1index_style.css">
+  <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
 </head>
+<script src="about.js"></script>
 <body>
   <!-- while desktop items still has a "next"
   count =0
@@ -13,7 +15,7 @@
     increment count
   -->
   <div class="row">
-    <div class="col-fill">
+    <div class="col-fill header">
         header
     </div>
   </div>
@@ -48,19 +50,24 @@
     echo "<div class=\"row\">";
     echo "<div class=\"col-desktop_margins\"></div>";
     echo "<div class=\"col-files\">
-    <a class=\"files\" onclick=\"something()\" href=\"javascript:void(0);\">about 2</a>
+    <a class=\"files\" onclick=\"about.open_popup()\" href=\"javascript:void(0);\">about 2</a>
     </div>";
     echo "<div class=\"col-desktop_margins\"></div>";
     echo "</div>";
   }
   else{
     echo "<div class=\"col-files\">
-    <a class=\"files\" onclick=\"something()\" href=\"javascript:void(0);\">about 1</a>
+    <a class=\"files\" onclick=\"open_popup()\" href=\"javascript:void(0);\">about 1</a>
     </div>";
     echo "<div class=\"col-desktop_margins\"> </div>";
     echo "</div>";
   }
 ?>
+<div id="popup">
+    <div class="popup_label">about me.txt</div>
+    <div class="popup_exit" onclick="close_popup()">X</div>
+    <div class="frame">hello hello. here is a link <a href="google.com" class="popup">point!</a></div>
+</div>
   <div class="row">
     <div class="col-fill footer">
         footer
