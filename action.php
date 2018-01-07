@@ -24,20 +24,25 @@
 </div>
 </div>";
   $html .= $header . $title . $header_close;
-  fwrite($page,$html);
   $row_start = "<div class=\"row\"><div class=\"col-margin\"></div>";
   $images_start = "<div class=\"col-content\"><div class=\"images\">";
-
+  $images = "";
   $images_end = "</div></div>";
 
   $links_start = "<div class=\"col-content\">";
-
+  $links = "";
   $links_end = "</div>";
   $row_end = "<div class=\"col-margin\"></div></div>";
-  fwrite($page, $desc);
+  $desc_start = "<div class=\"col-content\"><div class=\"desc\">";
+  $desc_end = "</div></div>";
+  $html .= $row_start . $images_start . $images . $images_end . $links_start . $links . $links_end . $row_end;
+  $html .= $row_start . $desc_start . $desc . $desc_end . $row_end;
+  $footer = "</body></html>";
+  $html .= $footer;
+  fwrite($page,$html);
   echo  $title . "has been created.<br>";
 
-  echo "<a href=\"desktop_items/" . $page . ".html\">Click here to view.<br></a>";
+  echo "<a href=\"desktop_items/" . $title . ".html\">Click here to view.<br></a>";
   echo "<a href=\"create_project.php\">Click here to make another page.</a><br>";
 ?>
 </body>

@@ -1,3 +1,7 @@
+<?php
+require_once './Mobile Detect/Mobile_Detect.php';
+$detect = new Mobile_Detect;
+?>
 <html>
 <head>
   <link rel="stylesheet" type="text/css" href="v1index_style.css">
