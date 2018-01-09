@@ -2,8 +2,10 @@
 <body>
 <?php
   $title = $_POST["page_name"];
+  
+  echo $title;
   $desc = $_POST["description"];
-  $page = fopen("desktop_items/" . htmlspecialchar($title) . ".html", "w");
+  $page = fopen("desktop_items/" . $title . ".html", "w");
   $html = "";
   $header = "<html>
   <head>
