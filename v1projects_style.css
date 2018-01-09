@@ -18,11 +18,13 @@ a.header:link, a.header:active, a.header:visited, a.header:hover{
   width: 75px;
   border-radius: 50%;
   text-align: center;
-  padding-top: 25;
+  padding-top: 15%;
 }
 a.back:link, a.back:active, a.back:visited, a.back:hover {
   color: white;
+  background: #ff6d99;
   text-decoration: none;
+  font-size: 25pt;
 }
 
 /*grid setup*/
