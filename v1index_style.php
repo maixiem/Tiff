@@ -1,3 +1,7 @@
+<?php
+require_once './Mobile Detect/Mobile_Detect.php';
+$detect = new Mobile_Detect;
+header ("Content-type: text/css");?>
 /*page options*/
 html {
   background: #0C59D1;
@@ -31,8 +35,16 @@ h3 {
     font-size: 12pt;
     font-weight: medium;
 }
+.icon_container {
+  width: 100%;
+  padding-left: 35%;
+  text-align: left;
+}
 a {
   font-family: 'Raleway', sans-serif;
+}
+a.icon {
+  font-size: 80pt;
 }
 a.folders:active, a.folders:link, a.folders:visited {
   color: #42C5BE;
@@ -116,19 +128,26 @@ a.popup:hover {
     display: table;
 }
 
-/*desktop responsiveness*/
-@media only screen and (min-width: 768px){
-  .col-files {width: 22.22%;}
-}
-
-/*phone responsiveness*/
-@media only screen and (max-width: 768px) {
-    .col-desktop_margins {
+<?php if ($detect->isMobile()){
+  echo ".col-desktop_margins {
     display:none;}
     .col-files {
       width: 100%;
-    }
+    }";
 }
+else{
+  echo "@media only screen and (min-width: 768px){";
+  echo ".col-files {width: 22.22%;}";
+  echo "}";
+  echo "@media only screen and (max-width: 768px){
+    .col-desktop_margins {
+  display:none;}
+  .col-files {
+    width: 100%;
+  }
+}";
+}
+?>
 
 /*grid options*/
 .col-files {

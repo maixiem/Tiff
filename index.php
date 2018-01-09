@@ -4,10 +4,11 @@ $detect = new Mobile_Detect;
 ?>
 <html>
 <head>
-  <link rel="stylesheet" type="text/css" href="v1index_style.css">
+  <link rel="stylesheet" type="text/css" href="v1index_style.php">
+  <link rel="stylesheet" href="font-awesome/css/font-awesome.min.css">
   <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
 </head>
-<script src="about.js"></script>
+<script src="tiff_v1.js"></script>
 <body>
   <!-- while desktop items still has a "next"
   count =0
@@ -28,40 +29,48 @@ $detect = new Mobile_Detect;
   $columns = 3;
   $dir->next();
   $dir->next();
+  $id = 0;
   while($dir->valid()){
     $count = 0;
     echo "<div class=\"row\">";
     echo "<div class=\"col-desktop_margins\"></div>";
     while($count != 3){
       $url = $dir->getBasename();
+      $name = $dir->getFilename();
       $dir->next();
-      echo "<div class=\"col-files\">
-      <a class=\"folders\" href=\"desktop_items/" . $url . "\">content</a>
-      </div>";
-      if($dir->valid()){
-        $count += 1;
+      echo "<div class=\"col-files\">";
+      echo "<div class=\"icon_container\">";
+      echo "<a class=\"folders icon\" href=\"desktop_items/" . $url . "\">";
+      echo "<i class=\"fa fa-folder\" aria-hidden=\"true\" onmouseover=\"folder_test(this)\" onmouseout=\"folder_close(this)\"></i></a>\n<br>";
+      echo "</div>";
+      echo "<a class=\"folders\" href=\"desktop_items/" . $url . "\">" . $name . "</a></div>";
+      $id +=1;
+        if($dir->valid()){
+          $count += 1;
+        }
+        else{
+          break;
+        }
       }
-      else{
-        break;
-      }
-    }
+
     if($count == 3){
-    echo "</div>";
+      echo "</div>";
+    }
   }
-  }
+
   if($count == 2){
     echo "</div>";
     echo "<div class=\"row\">";
     echo "<div class=\"col-desktop_margins\"></div>";
-    echo "<div class=\"col-files\">
-    <a class=\"files\" onclick=\"about.open_popup()\" href=\"javascript:void(0);\">about 2</a>
+    echo "<div class=\"col-files\"><div id=\"icon_container\">\n<a class=\"files icon\" onclick=\"open_popup()\" href=\"javascript:void(0);\"><i class=\"fa fa-file\" aria-hidden=\"true\"></i></a>\n
+    </div><br><a class=\"files\" onclick=\"open_popup()\" href=\"javascript:void(0);\">about 2</a>
     </div>";
     echo "<div class=\"col-desktop_margins\"></div>";
     echo "</div>";
   }
   else{
-    echo "<div class=\"col-files\">
-    <a class=\"files\" onclick=\"open_popup()\" href=\"javascript:void(0);\">about 1</a>
+    echo "<div class=\"col-files\"><div id=\"icon_container\">\n<a class=\"files icon\" onclick=\"open_popup()\" href=\"javascript:void(0);\"><i class=\"fa fa-file\" aria-hidden=\"true\"></i></a>\n
+    </div><br><a class=\"files\" onclick=\"open_popup()\" href=\"javascript:void(0);\">about 1</a>
     </div>";
     echo "<div class=\"col-desktop_margins\"> </div>";
     echo "</div>";
