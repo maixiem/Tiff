@@ -39,11 +39,7 @@ $detect = new Mobile_Detect;
       $name = $dir->getFilename();
       $dir->next();
       echo "<div class=\"col-files\">";
-      echo "<div class=\"icon_container\">";
-      echo "<a class=\"folders icon\" href=\"desktop_items/" . $url . "\">";
-      echo "<i class=\"fa fa-folder\" aria-hidden=\"true\" onmouseover=\"folder_test(this)\" onmouseout=\"folder_close(this)\"></i></a>\n<br>";
-      echo "</div>";
-      echo "<a class=\"folders\" href=\"desktop_items/" . $url . "\">" . $name . "</a></div>";
+      echo "<a class=\"folders\" href=\"desktop_items/" . $url . "\"><div class=\"icon_container\"></div>" . $name . "</a></div>";
       $id +=1;
         if($dir->valid()){
           $count += 1;

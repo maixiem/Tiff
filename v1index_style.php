@@ -36,15 +36,24 @@ h3 {
     font-weight: medium;
 }
 .icon_container {
+  position: relative;
+  margin-bottom: 10%;
   width: 100%;
-  padding-left: 35%;
-  text-align: left;
+  min-height: 8em;
+  background: url('folder.png') no-repeat;
+  background-size: contain;
+  background-position: center;
+}
+.icon_container:hover {
+  background: url('folder_open.png') no-repeat;
+  background-size: contain;
+  background-position: center;
 }
 a {
   font-family: 'Raleway', sans-serif;
 }
 a.icon {
-  font-size: 80pt;
+  font-size: 8em;
 }
 a.folders:active, a.folders:link, a.folders:visited {
   color: #42C5BE;
