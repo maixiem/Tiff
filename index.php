@@ -37,12 +37,19 @@ $detect = new Mobile_Detect;
     while($count != 3){
       $url = $dir->getBasename();
       $name = $dir->getFilename();
-      $dir->next();
-      echo "<div class=\"col-files\">";
-      echo "<a class=\"folders\" href=\"desktop_items/" . $url . "\"><div class=\"icon_container\"></div>" . $name . "</a></div>";
-      $id +=1;
+     if($dir->isFile()){
+       $count+=1;
+       //echo $count;
+        echo "<div class=\"col-files\">";
+        //echo $dir->getType();
+        $dir->next();
+        echo "<a class=\"folders\" href=\"desktop_items/" . $url . "\"><div class=\"icon_container\"></div><span>" . $name . "</span></a></div>";
+      }else{
+        $dir->next();
+       }
+        $id +=1;
         if($dir->valid()){
-          $count += 1;
+          $continue;
         }
         else{
           break;
@@ -54,19 +61,19 @@ $detect = new Mobile_Detect;
     }
   }
 
-  if($count == 2){
+  if($count == 3){
     echo "</div>";
     echo "<div class=\"row\">";
     echo "<div class=\"col-desktop_margins\"></div>";
     echo "<div class=\"col-files\"><div id=\"icon_container\">\n<a class=\"files icon\" onclick=\"open_popup()\" href=\"javascript:void(0);\"><i class=\"fa fa-file\" aria-hidden=\"true\"></i></a>\n
-    </div><br><a class=\"files\" onclick=\"open_popup()\" href=\"javascript:void(0);\">about 2</a>
+    </div><br><a class=\"files\" onclick=\"open_popup()\" href=\"javascript:void(0);\"><span>about</span></a>
     </div>";
     echo "<div class=\"col-desktop_margins\"></div>";
     echo "</div>";
   }
   else{
     echo "<div class=\"col-files\"><div id=\"icon_container\">\n<a class=\"files icon\" onclick=\"open_popup()\" href=\"javascript:void(0);\"><i class=\"fa fa-file\" aria-hidden=\"true\"></i></a>\n
-    </div><br><a class=\"files\" onclick=\"open_popup()\" href=\"javascript:void(0);\">about 1</a>
+    </div><br><a class=\"files\" onclick=\"open_popup()\" href=\"javascript:void(0);\"><span>about</span></a>
     </div>";
     echo "<div class=\"col-desktop_margins\"> </div>";
     echo "</div>";
@@ -75,7 +82,9 @@ $detect = new Mobile_Detect;
 <div id="popup">
     <div class="popup_label">about me.txt</div>
     <div class="popup_exit" onclick="close_popup()">X</div>
-    <div class="frame">hello hello. here is a link <a href="google.com" class="popup">point!</a></div>
+    <div class="frame">I'm a designer with a special place in their heart for UI/UX.<br>I also do some <a href="google.com" class="popup">illustrations</a>. Recent graduate from the York-Sheridan Joint Program for Design. Here's my <a href="/" class="popup">resume</a>.
+    <p>
+    Contact me at <a href="mailto:com.tiff@gmail.com" class="popup">com.tiff@gmail.com</a></div>
 </div>
   <div class="row">
     <div class="col-fill footer">

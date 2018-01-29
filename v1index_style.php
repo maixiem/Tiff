@@ -39,7 +39,12 @@ h3 {
   position: relative;
   margin-bottom: 10%;
   width: 100%;
-  min-height: 8em;
+  <?php if ($detect->isMobile()){
+    echo  "min-height: 16em;";
+  }else{
+    echo "min-height: 8em;";
+  }
+  ?>
   background: url('folder.png') no-repeat;
   background-size: contain;
   background-position: center;
@@ -49,11 +54,22 @@ h3 {
   background-size: contain;
   background-position: center;
 }
+span {
+  <?php if ($detect->isMobile()){
+    echo "font-size: 4em;";
+  }else{
+    echo "font-size: 1em;";
+  }?>
+}
 a {
   font-family: 'Raleway', sans-serif;
 }
 a.icon {
-  font-size: 8em;
+  <?php if ($detect->isMobile()){
+  echo "font-size: 16em;";
+  }else{
+    echo "font-size:7.9em;";
+  }?>
 }
 a.folders:active, a.folders:link, a.folders:visited {
   color: #42C5BE;
@@ -69,8 +85,11 @@ a.files:active, a.files:link, a.files:visited{
 a.files:hover{
   color: white;
 }
+<!--add case for mobile; popup should stretch the whole screen-->
 #popup {
   position: absolute;
+  top: 1em;
+  left: 0.5em;
   width: 500px;
   height: auto;
   box-shadow:5px 5px 10px #273854;
@@ -102,12 +121,13 @@ a.files:hover{
   background: #9E465B;
 }
 .frame {
+  font-size: 1em;
   padding: 15px;
   font-family: 'Georgia', serif;
   color: #000000;
   background: #ffffff;
   width: inherit;
-  min-height: 400px;
+  min-height: 300px;
   display: block;
   border-radius: 0px 0px 5px 5px;
 }

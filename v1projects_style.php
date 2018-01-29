@@ -1,3 +1,7 @@
+<?php
+require_once './Mobile Detect/Mobile_Detect.php';
+$detect = new Mobile_Detect;
+header ("Content-type: text/css");?>
 html {
   background: #ffffff;
   border-right: 6px solid #ff6d99;
@@ -5,14 +9,23 @@ html {
 
 body {
   font-family: 'Georgia', serif;
+  <?php if($detect->isMobile()){
+    echo "font-size: 2em;";
+  }else{
+    echo "font-size: 1em;";
+  }
+  ?>
 }
 
 .mySlides {display: none}
 img {vertical-align: middle;}
-
+.slides{
+  width: 100%;
+}
 /* Slideshow container */
 .slideshow-container {
-  max-width: 1000px;
+  min-width: 50%;
+  max-width: 100%;
   position: relative;
   margin: auto;
 }
@@ -88,12 +101,12 @@ img {vertical-align: middle;}
 }
 
 @-webkit-keyframes fade {
-  from {opacity: .4} 
+  from {opacity: .4}
   to {opacity: 1}
 }
 
 @keyframes fade {
-  from {opacity: .4} 
+  from {opacity: .4}
   to {opacity: 1}
 }
 
@@ -104,7 +117,7 @@ img {vertical-align: middle;}
 
 a.header:link, a.header:active, a.header:visited, a.header:hover{
   font-family: 'Raleway', sans-serif;
-  font-size: 8em;
+  font-size: 4em;
   text-decoration: none;
   color: #42C5BE;
   margin-bottom:50px;
@@ -122,11 +135,22 @@ a.header:link, a.header:active, a.header:visited, a.header:hover{
 }
 .back-mobile {
   text-align: center;
+  padding: .25em;
+  position: fixed;
+  right: .25em;
+  bottom: .25em;
+  background: white;
+  border: 4px solid #ff6d99;
 }
-a.back-mobile:link, a.back-mobile:active, a.back:visited, a.back:hover{
+a.back-mobile:link, a.back-mobile:visited{
   color: #ff6d99;
-  font-size: 20pt;
+  font-size: 3em;
+  padding: 0em;
   text-decoration: none;
+}
+a.back-mobile:active {
+  color: white;
+  background-color: #ff6d99;
 }
 a.back:link, a.back:active, a.back:visited, a.back:hover {
   color: white;
@@ -147,7 +171,11 @@ margin-bottom: 25px;
   width: 16.66%;
 }
 .col-content {
-  width: 33.33%;
+  <?php if($detect->isMobile()){
+    echo "width: 100%;";
+  }else{
+    echo "width: 33.33%;";
+  } ?>
 }
 .col-title {
   width: 83.34%;
@@ -160,10 +188,9 @@ margin-bottom: 25px;
 
 [class*="col-"] {
     float: left;
-    padding: 15px;
-    /*border: 1px solid red;*/
+    padding: 1em;
 }
-
+<!--need media queries for smaller screens with "col-content"-->
 .row::after {
     content: "";
     clear: both;
