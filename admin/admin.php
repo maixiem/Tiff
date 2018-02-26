@@ -199,6 +199,7 @@ function sendFiles(){
           }
         };
         desc_xhr.send(dfd);
+        show_upload(title);
       }else{
         var ld = links;
         ld.append("title",title);
@@ -212,8 +213,8 @@ function sendFiles(){
           }};
         link_xhr.send(ld);
       }
+      show_upload(title);
     }
-    show_upload(title);
   };
     xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     xhr.send("title=" + title);
