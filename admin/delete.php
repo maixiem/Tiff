@@ -31,7 +31,7 @@ function delete_dir($d){
 }
 
 foreach($page as $obj){
-  $path = "./desktop_items/$obj";
+  $path = "../desktop_items/$obj";
   echo "<b>Removing</b> ";
   echo $path;
   echo "<br>";

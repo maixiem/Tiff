@@ -1,7 +1,8 @@
 <?php
-require_once './Mobile Detect/Mobile_Detect.php';
+require_once '../Mobile Detect/Mobile_Detect.php';
 $detect = new Mobile_Detect;
 header ("Content-type: text/css");?>
+
 html {
   background: #ffffff;
   border-right: 6px solid #ff6d99;
@@ -16,18 +17,34 @@ body {
   }
   ?>
 }
+a {
+  <?php if($detect->isMobile()){
+  echo "font-size: 2em;";
+}else {
+  echo "font-size: 1em;";
+}?>
+}
 
-.mySlides {display: none}
+.mySlides {display: none;
+text-align: center;
+vertical-align: middle;}
+
 img {vertical-align: middle;}
 .slides{
-  width: 100%;
+  max-height: 50em;
+  max-width: 100%;
+}
+.slides:hover{
+  opacity: .7;
 }
 /* Slideshow container */
 .slideshow-container {
   min-width: 50%;
   max-width: 100%;
   position: relative;
-  margin: auto;
+  background: #e5e5e5;
+  max-height: 50em;
+  margin-bottom: 1em;
 }
 
 /* Next & previous buttons */
@@ -79,13 +96,21 @@ img {vertical-align: middle;}
 /* The dots/bullets/indicators */
 .dot {
   cursor: pointer;
-  height: 15px;
-  width: 15px;
+  <?php if($detect->isMobile()){
+    echo "height: 1.5em; width: 1.5em;";
+}else{
+  echo "height: 15px;
+  width: 15px;";
+}?>
   margin: 0 2px;
   background-color: #bbb;
   border-radius: 50%;
   display: inline-block;
   transition: background-color 0.6s ease;
+}
+
+.dotStyle{
+  text-align: center;
 }
 
 .active, .dot:hover {
@@ -112,7 +137,7 @@ img {vertical-align: middle;}
 
 /* On smaller screens, decrease text size */
 @media only screen and (max-width: 300px) {
-  .prev, .next,.text {font-size: 11px}
+  .prev, .next,.text, a {font-size: 5em}
 }
 
 a.header:link, a.header:active, a.header:visited, a.header:hover{
@@ -159,23 +184,54 @@ a.back:link, a.back:active, a.back:visited, a.back:hover {
   font-size: 20pt;
 }
 
-img{
-margin-bottom: 25px;
-}
-
 /*grid setup*/
 * {
   box-sizing: border-box;
 }
-.col-margin {
-  width: 16.66%;
+
+@media only screen and (max-width: 850px){
+  .col-content{
+    width: 100%;
+  }
+  .col-margin{
+    display: none;
+  }
+  .col-half{
+    width: 25%;
+  }
 }
+@media only screen and (min-width: 851px){
 .col-content {
   <?php if($detect->isMobile()){
     echo "width: 100%;";
   }else{
-    echo "width: 33.33%;";
+    echo "width: 50%;";
   } ?>
+}
+.col-margin {
+  <?php if($detect->isMobile()){
+    echo "display: none;";
+  }else{
+  echo "width: 16.66%;";
+}?>
+}
+.col-half{
+  width: 50%;
+  margin-left: 16.66%;
+}
+
+}
+@media only screen and (min-width: 1200px){
+  .col-content {
+    width: 50.3%;
+  }
+  .col-margin{
+    width: 16.66%;
+  }
+  .col-half{
+    width: 25%;
+    margin-left: 0;
+  }
 }
 .col-title {
   width: 83.34%;
@@ -190,9 +246,9 @@ margin-bottom: 25px;
     float: left;
     padding: 1em;
 }
-<!--need media queries for smaller screens with "col-content"-->
 .row::after {
     content: "";
     clear: both;
     display: table;
 }
+<!--need media queries for smaller screens with "col-content"-->

@@ -4,7 +4,7 @@ $detect = new Mobile_Detect;
 ?>
 <html>
 <head>
-  <link rel="stylesheet" type="text/css" href="v1index_style.php">
+  <link rel="stylesheet" type="text/css" href="styles/v1index_style.php">
   <link rel="stylesheet" href="font-awesome/css/font-awesome.min.css">
   <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
 </head>
@@ -39,9 +39,7 @@ $detect = new Mobile_Detect;
       $name = $dir->getFilename();
      if($dir->isFile()){
        $count+=1;
-       //echo $count;
         echo "<div class=\"col-files\">";
-        //echo $dir->getType();
         $dir->next();
         echo "<a class=\"folders\" href=\"desktop_items/" . $url . "\"><div class=\"icon_container\"></div><span>" . $name . "</span></a></div>";
       }else{
@@ -55,7 +53,6 @@ $detect = new Mobile_Detect;
           break;
         }
       }
-
     if($count == 3){
       echo "</div>";
     }
@@ -79,17 +76,18 @@ $detect = new Mobile_Detect;
     echo "</div>";
   }
 ?>
-<div id="popup">
+<div class="popup">
     <div class="popup_label">about me.txt</div>
     <div class="popup_exit" onclick="close_popup()">X</div>
-    <div class="frame">I'm a designer with a special place in their heart for UI/UX.<br>I also do some <a href="google.com" class="popup">illustrations</a>. Recent graduate from the York-Sheridan Joint Program for Design. Here's my <a href="/" class="popup">resume</a>.
+    <div class="frame">I\'m a designer with a special place in their heart for UI/UX.<br>I also do some <a href="google.com" class="popup_link">illustrations</a>. Recent graduate from the York-Sheridan Joint Program for Design. Here's my <a href="/" class="popup_link">resume</a>.
     <p>
-    Contact me at <a href="mailto:com.tiff@gmail.com" class="popup">com.tiff@gmail.com</a></div>
+    Contact me at <a href="mailto:com.tiff@gmail.com" class="popup_link">com.tiff@gmail.com</a></div>
 </div>
   <div class="row">
     <div class="col-fill footer">
         copyright tiffany peng
     </div>
   </div>
+  <script src="tiff_v1.js"></script>
 </body>
 </html>

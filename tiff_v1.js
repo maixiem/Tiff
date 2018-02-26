@@ -1,8 +1,8 @@
 function open_popup(){
-  document.getElementById("popup").style.display = "inline";
+  document.getElementsByClassName("popup")[0].style.display = "inline";
 }
 function close_popup(){
-  document.getElementById("popup").style.display = "none";
+  document.getElementsByClassName("popup")[0].style.display = "none";
 }
 function folder_open(id){
   id.innerHTML = "<i class=\"fa fa-folder-open\" aria-hidden=\"true\"></i>";
@@ -16,31 +16,20 @@ function folder_test(id){
   id.classList.remove("fa-folder");
   id.classList.add("fa-folder-open");
 }
-var i=1;
-function addLink(){
-  i+=1;
-  var name = document.createElement("P");
-  name.appendChild(document.createTextNode(`Link name ${i}: `));
-  var url = document.createElement("P");
-  url.appendChild(document.createTextNode(`Link URL ${i}: `));
-
-  var name_input = document.createElement("input");
-  var url_input = document.createElement("input");
-  name_input.type = "text";
-  name_input.name = "link_names[]";
-  url_input.type = "text";
-  url_input.name = "link_urls[]";
-
-
-  name.appendChild(name_input);
-  url.appendChild(url_input);
-  document.getElementById("link_container").appendChild(name);
-  document.getElementById("link_container").appendChild(url);
-}
-
-function toggle(x){
+function toggle(){
   var boxes = document.getElementsByName('deleted_page[]');
   for($i=0; $i< boxes.length; $i++){
+    if(boxes[$i].checked){
+      boxes[$i].checked = false;
+    }else{
     boxes[$i].checked = true;
+    }
   }
+}
+function show_upload(x){
+  var up = document.getElementById('upload_result');
+  var a = document.createElement('a',x + "was created");
+  a.setAttribute('href', "../desktop_items/" + x);
+  up.appendChild(a);
+  up.style.display = "block";
 }

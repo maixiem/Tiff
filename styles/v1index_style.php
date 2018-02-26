@@ -1,5 +1,5 @@
 <?php
-require_once './Mobile Detect/Mobile_Detect.php';
+require_once '../Mobile Detect/Mobile_Detect.php';
 $detect = new Mobile_Detect;
 header ("Content-type: text/css");?>
 /*page options*/
@@ -45,12 +45,12 @@ h3 {
     echo "min-height: 8em;";
   }
   ?>
-  background: url('folder.png') no-repeat;
+  background: url('../assets/folder.png') no-repeat;
   background-size: contain;
   background-position: center;
 }
 .icon_container:hover {
-  background: url('folder_open.png') no-repeat;
+  background: url('../assets/folder_open.png') no-repeat;
   background-size: contain;
   background-position: center;
 }
@@ -85,10 +85,8 @@ a.files:active, a.files:link, a.files:visited{
 a.files:hover{
   color: white;
 }
-<!--add case for mobile; popup should stretch the whole screen-->
-#popup {
-  position: absolute;
-  top: 1em;
+.popup{
+  position: absolute;  top: 1em;
   left: 0.5em;
   width: 500px;
   height: auto;
@@ -131,11 +129,11 @@ a.files:hover{
   display: block;
   border-radius: 0px 0px 5px 5px;
 }
-a.popup:active, a.popup:link, a.popup:visited {
+a.popup_link:active, a.popup_link:link, a.popup_link:visited {
   font-family: inherit;
   color: #0C59D1;
 }
-a.popup:hover {
+a.popup_link:hover {
   color: #FE7692;
 }
 /*grid setup*/

@@ -41,39 +41,33 @@ $header= "<?php require_once '../Mobile Detect/Mobile_Detect.php';
               <a href=\\\"/\\\" class=\\\"header\\\">\";
         }
         ?>";
-  $header_close = "</a>
-\t</div>
-</div>";
+  $header_close = "</a>\n\t</div>\n</div>";
   $html .= $header . $title . $header_close;
-  $row_start = "\n<div class=\"row\"><div class=\"col-margin\"></div>";
+  $row_start = "\n<div class=\"row\">";
   $images_start = "\n<div class=\"col-content\"><div class=\"slideshow-container\">";
   $images ="";
   $dots = "";
   $pic_dir = "./desktop_items/" . $title . "/";
   mkdir($pic_dir);
-  if(isset($_FILES['images'])){
-    $img_count = count($_FILES['images']['name']);
-    for($i=0; $i < $img_count ; $i++){
-    $name = basename($_FILES['images']['name'][$i]);
-    echo $name;
-    echo "<br>";
-    move_uploaded_file($_FILES['images']['tmp_name'][$i], "$pic_dir/$name");
-    $images .= "<div class=\"mySlides fade\"><a href=\"$title/$name\" target=\"_blank\">
-      <img src=\"$title/$name\" class=\"slides\"></a>
-      </div>";
-      $j = $i+1;
-    $dots .= "<span class=\"dot\" onclick=\"currentSlide($j)\"></span>";
+  if(isset($_FILES)){
+    $img_count = count($_FILES);
+    echo $img_count;
+    if($img_count > 0){
+      $j = 0;
+      foreach($_FILES as $pic){
+        $name = basename($pic['name']);
+        echo $name;
+        echo " uploaded <br>";
+        move_uploaded_file($pic['tmp_name'], "$pic_dir/$name");
+        $images .= "<div class=\"mySlides fade\"><a href=\"$title/$name\" target=\"_blank\">\n<img src=\"$pic_dir/$name\" class=\"slides\"></a>\n</div>";
+        $j +=1;
+        $dots .= "<span class=\"dot\" onclick=\"currentSlide($j)\"></span>";
+      }
+      $images_end = "\n<a class=\"prev\" onclick=\"plusSlides(-1)\">&#10094;</a>\n<a class=\"next\" onclick=\"plusSlides(1)\">&#10095;</a>\n</div>\n<br>\n<div style=\"text-align:center\">" . $dots . "</div></div>";
+   }else{
+    $images_end = "</div>";
   }
-}
-
-  $images_end = "\n<a class=\"prev\" onclick=\"plusSlides(-1)\">&#10094;</a>
-<a class=\"next\" onclick=\"plusSlides(1)\">&#10095;</a>
-
-</div>
-<br>
-<div style=\"text-align:center\">" . $dots . "</div></div>";
-// fillerbg? gray?
-// turn off captions for now unless tiff rly wants them
+ }
   $links_start = "\n<div class=\"col-content\">";
   $link_names = new ArrayIterator($_POST['link_names']);
   $link_urls = new ArrayIterator($_POST['link_urls']);
